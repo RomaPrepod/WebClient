@@ -2,13 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './errors/not-found.component';
+import { LecturesComponent } from './lectures/lectures.component';
+import { LabsComponent } from './labs/labs.component';
+import { TestsComponent } from './tests/tests.component';
+import { ResultsComponent } from './results/results.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: '404', component: NotFoundComponent },
-  { path: '**', redirectTo: '404' }
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'lectures', component: LecturesComponent },
+  { path: 'labs', component: LabsComponent },
+  { path: 'tests', component: TestsComponent },
+  { path: 'results', component: ResultsComponent },
 ];
 
 @NgModule({

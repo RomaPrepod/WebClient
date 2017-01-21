@@ -5,16 +5,21 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './errors/not-found.component';
 
-import { RomaService } from './services/roma.service';
+import { HomeComponent } from './home/home.component';
+import { LecturesComponent } from './lectures/lectures.component';
+import { LabsComponent } from './labs/labs.component';
+import { TestsComponent } from './tests/tests.component';
+import { ResultsComponent } from './results/results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NotFoundComponent
+    LecturesComponent,
+    LabsComponent,
+    TestsComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +28,7 @@ import { RomaService } from './services/roma.service';
     AppRoutingModule
   ],
   providers: [
-    RomaService
+
   ],
   bootstrap: [AppComponent]
 })
