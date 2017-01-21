@@ -1,34 +1,10 @@
-<div id="wrapper" [class.toggled]="toggled">
-  <!-- Sidebar -->
-  <div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-      <li class="sidebar-brand">
-        <a [routerLink]="['']"><i class="fa fa-paw"></i><span>1С-Битрикс</span></a>
-      </li>
-      <li>
-        <a [routerLink]="['/lectures']"><i class="fa fa-home"></i><span>Лекциии</span></a>
-      </li>
-      <li>
-        <a [routerLink]="['/labs']"><i class="fa fa-edit"></i><span>Лабы</span></a>
-      </li>
-      <li>
-        <a [routerLink]="['/tests']"><i class="fa fa-desktop"></i>Контрольные<span class="fa fa-chevron-down"></span></a>
-      </li>
-      <li>
-        <a [routerLink]="['/results']"><i class="fa fa-table"></i>Результаты<span class="fa fa-chevron-down"></span></a>
-      </li>
-    </ul>
-  </div>
-  <!-- /#sidebar-wrapper -->
-  <!-- Page Content -->
-  <div id="page-content-wrapper">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12">
-          <router-outlet></router-outlet>
-        </div>
-      </div>
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-sm-3'>
+      <rp-nav-menu></rp-nav-menu>
+    </div>
+    <div class='col-sm-9 body-content'>
+      <router-outlet></router-outlet>
     </div>
   </div>
-  <!-- /#page-content-wrapper -->
 </div>
