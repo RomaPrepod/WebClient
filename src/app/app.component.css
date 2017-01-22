@@ -4,3 +4,14 @@
     padding-top: 50px;
   }
 }
+.sidebar {
+  background: #2A3F54;
+  min-height: 100%;
+  width: 70px;
+  padding: 0;
+  z-index: 9;
+  position: fixed;
+}
+.body-content {
+  margin-left:70px;
+}

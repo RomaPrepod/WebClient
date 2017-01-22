@@ -7,22 +7,22 @@
                 <span class='icon-bar'></span>
                 <span class='icon-bar'></span>
             </button>
-      <a class='navbar-brand' [routerLink]="['/home']"><i class="fa fa-paw"></i><span>1С-Битрикс</span></a>
+      <a class='navbar-brand logo' [routerLink]="['']" title="Главная"><i class="fa fa-paw"></i></a>
     </div>
     <div class='clearfix'></div>
     <div class='navbar-collapse collapse'>
       <ul class='nav navbar-nav'>
         <li [routerLinkActive]="['link-active']">
-          <a [routerLink]="['/lectures']"><i class="fa fa-home"></i><span>Лекциии</span></a>
+          <a class="menu-link" [routerLink]="['/lectures']"><i class="menu-link__icon fa fa-home"></i><span class="menu-link__text">Лекциии</span></a>
         </li>
         <li [routerLinkActive]="['link-active']">
-          <a [routerLink]="['/labs']"><i class="fa fa-edit"></i><span>Лабы</span></a>
+          <a class="menu-link" [routerLink]="['/labs']"><i class="menu-link__icon fa fa-edit"></i><span class="menu-link__text">Лабы</span></a>
         </li>
         <li [routerLinkActive]="['link-active']">
-          <a [routerLink]="['/tests']"><i class="fa fa-desktop"></i>Контрольные<span class="fa fa-chevron-down"></span></a>
+          <a class="menu-link" [routerLink]="['/tests']"><i class="menu-link__icon fa fa-desktop"></i><span class="menu-link__text">Контрольные</span></a>
         </li>
         <li [routerLinkActive]="['link-active']">
-          <a [routerLink]="['/results']"><i class="fa fa-table"></i>Результаты<span class="fa fa-chevron-down"></span></a>
+          <a class="menu-link" [routerLink]="['/results']"><i class="menu-link__icon fa fa-table"></i><span class="menu-link__text">Результаты</span></a>
         </li>
       </ul>
     </div>

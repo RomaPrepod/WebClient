@@ -21,43 +21,90 @@ li.link-active a:focus {
   left: 0;
   right: 0;
   z-index: 1;
+  height: 100%;
 }
-
-@media (min-width: 768px) {
-  /* On small screens, convert the nav menu to a vertical sidebar */
-  .main-nav {
-    height: 100%;
-    width: calc(25% - 20px);
-  }
   .navbar {
     border-radius: 0px;
     border-width: 0px;
     height: 100%;
   }
+  .navbar.navbar-inverse {
+    background-color:#2A3F54;
+    width: 70px;
+  }
+    .navbar a{
+      color: #fff;
+    }
+    .logo {
+      font-size: 27px;
+      display: block;
+      float: none;
+      height: 75px;
+    }
+      .logo .fa {
+        border: 1px #fff solid;
+        line-height:  1;
+        border-radius: 50%;
+        margin: 1px 0 12px 0px;
+        padding: 6px;
+        display: block;
+      }
   .navbar-header {
     float: none;
   }
   .navbar-collapse {
-    border-top: 1px solid #444;
+    border-top: 0;
     padding: 0px;
   }
   .navbar ul {
     float: none;
   }
-  .navbar li {
-    float: none;
-    font-size: 15px;
-    margin: 6px;
-  }
-  .navbar li a {
-    padding: 10px 16px;
-    border-radius: 4px;
-  }
-  .navbar a {
-    /* If a menu item's text is too long, truncate it */
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
+    .navbar li {
+      float: none;
+      font-size: 15px;
+      margin: 0px;
+      position: relative;
+      height: 60px;
+      border-radius:0;
+    }
+      .menu-link {
+        position: absolute;
+        width: 70px;
+        padding: 10px 16px;
+        border-radius: 4px;
+        color: #fff;
+        font-size:11px;
+        border-radius: 0;
+        background-color: #2A3F54 !important;
+        border-right: 4px #2A3F54 solid;
+        text-align: center;
+        -webkit-transition: width 0.2s; /* Safari */
+        transition: width 0.2s;
+      }
+        .link-active .menu-link {
+          background-color: #2A3F54 !important;
+          border-color:  #1ABB9C;
+        }
+          .menu-link__icon {
+            display: inline-block;
+            font-size: 22px;
+          }
+          .menu-link__text {
+            display: none;
+            position: absolute;
+            right: 20px;
+            top: 13px;
+          }
+            .menu-link:hover  .menu-link__text {
+              display: block;
+              padding-left: 20px;
+            }
+          .menu-link:hover {
+            position: absolute;
+            background-color: #2A3F54 ;
+            padding-right: 130px;
+            width: 185px;
+            -webkit-transition: width 0.2s; /* Safari */
+            transition: width 0.2s;
+            z-index: 9999;
+          }
