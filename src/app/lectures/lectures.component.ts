@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LectureService } from '../services';
+import { Lecture } from '../model';
 
 @Component({
   selector: 'rp-lectures',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lectures.component.css']
 })
 export class LecturesComponent implements OnInit {
+  lectures: Lecture[];
 
-  constructor() { }
+  constructor(private lectureService: LectureService) { }
 
   ngOnInit() {
+    this.lectures = [];
+    this.lectureService.getAll()
+      .subscribe(lecture => this.lectures.push(lecture));
   }
-
 }

@@ -1,3 +1,12 @@
-<p>
-  lectures works!
-</p>
+<ul *ngIf="lectures">
+  <li *ngFor="let l of lectures">
+    <rp-lecture
+      [title]="l.title"
+      [date]="l.date | date:'shortDate'"
+      [description]="l.description">
+    </rp-lecture>
+
+  </li>
+
+</ul>
+
