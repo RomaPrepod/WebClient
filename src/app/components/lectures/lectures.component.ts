@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LectureService } from '../services';
-import { Lecture } from '../model';
+import { LectureService } from '../../services';
+import { Lecture } from '../../model';
 
 @Component({
   selector: 'rp-lectures',
