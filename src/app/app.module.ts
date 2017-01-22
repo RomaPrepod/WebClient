@@ -12,6 +12,7 @@ import { LecturesComponent } from './lectures/lectures.component';
 import { LabsComponent } from './labs/labs.component';
 import { TestsComponent } from './tests/tests.component';
 import { ResultsComponent } from './results/results.component';
+import { TopMenuComponent } from './top-menu/top-menu.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ResultsComponent } from './results/results.component';
     LecturesComponent,
     LabsComponent,
     TestsComponent,
-    ResultsComponent
+    ResultsComponent,
+    TopMenuComponent
   ],
   imports: [
     BrowserModule,
