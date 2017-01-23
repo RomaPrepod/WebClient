@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-let login = true;
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'rp-top-menu',
@@ -8,10 +7,11 @@ let login = true;
   styleUrls: ['./top-menu.component.scss']
 })
 export class TopMenuComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  constructor(public auth: AuthService) {
   }
 
+  ngOnInit() {
+    this.auth.handleAuthentication();
+  }
 }
+

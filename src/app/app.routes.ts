@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import {
   HomeComponent,
@@ -9,17 +8,11 @@ import {
   ResultsComponent
 } from './components';
 
-const routes: Routes = [
+export const ROUTES: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'lectures', component: LecturesComponent },
   { path: 'labs', component: LabsComponent },
   { path: 'tests', component: TestsComponent },
   { path: 'results', component: ResultsComponent },
+  { path: 'login/callback', redirectTo: '' }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-  providers: []
-})
-export class AppRoutingModule { }
