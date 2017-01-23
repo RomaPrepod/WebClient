@@ -13,6 +13,10 @@
   position: fixed;
 }
 .body-content {
-  margin-left:70px;
+  padding-left: 85px;
+  padding-right: 15px;
   width: 100%;
+}
+.topmenu {
+  margin-left: 70px;
 }

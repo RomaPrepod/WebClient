@@ -1,0 +1,29 @@
+$height: 50px;
+.topbar {
+  background: #EDEDED;
+  border-bottom: 1px solid #D9DEE4;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: right;
+  height: $height;
+  vertical-align: $height;
+  line-height: $height;
+}
+  .topbar__user {
+    display: inline-block;
+    padding-right: 12px;
+  }
+
+.user__img {
+  border-radius: 50%;
+  height: $height;
+  width: $height;
+  padding: 5px;
+}
+
+.user__name {
+  color: #333;
+}
+.login{
+  display: inline-block;
+}
