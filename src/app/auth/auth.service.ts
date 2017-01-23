@@ -8,26 +8,20 @@ declare var Auth0Lock: any;
 @Injectable()
 export class AuthService {
 
-  private storageKeys = {
-    userName: 'user_name',
-    accessToken: 'access_token',
-    idToken: 'id_token'
-  };
-
   private lock = new Auth0Lock(AUTH_CONFIG.clientID, AUTH_CONFIG.domain, {
     oidcConformant: true,
     autoclose: true,
     auth: {
       redirectUrl: AUTH_CONFIG.callbackURL,
       responseType: 'token id_token',
-      audience: `https://${AUTH_CONFIG.domain}/userinfo`
+      audience: `https://${AUTH_CONFIG.domain}/userinfo`,
     }
   });
 
   userName: string;
 
   constructor() {
-    this.userName = localStorage.getItem(this.storageKeys.userName);
+    this.userName = localStorage.getItem('user_name');
     if (!this.userName) {
       this.logout();
     }
@@ -42,9 +36,9 @@ export class AuthService {
   }
 
   public logout(): void {
-    localStorage.removeItem(this.storageKeys.accessToken);
-    localStorage.removeItem(this.storageKeys.idToken);
-    localStorage.removeItem(this.storageKeys.userName);
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('user_name');
   }
 
   public handleAuthentication(): void {
@@ -61,15 +55,15 @@ export class AuthService {
   private getProfile(accessToken: string) {
     const self = this;
     this.lock.getUserInfo(accessToken, function (err, profile) {
-      if (profile) {
-        localStorage.setItem(self.storageKeys.userName, profile.name);
+      if (profile && profile.name) {
+        localStorage.setItem('user_name', profile.name);
         self.userName = profile.name;
       }
     });
   }
 
   private setUser(authResult): void {
-    localStorage.setItem(this.storageKeys.accessToken, authResult.accessToken);
-    localStorage.setItem(this.storageKeys.idToken, authResult.idToken);
+    localStorage.setItem('access_token', authResult.accessToken);
+    localStorage.setItem('id_token', authResult.idToken);
   }
 }
