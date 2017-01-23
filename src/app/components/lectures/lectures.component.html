@@ -1,12 +1,15 @@
-<ul *ngIf="lectures">
-  <li *ngFor="let l of lectures">
-    <rp-lecture
-      [title]="l.title"
-      [date]="l.date | date:'shortDate'"
-      [description]="l.description">
-    </rp-lecture>
-
-  </li>
-
-</ul>
-
+<div class="lectures">
+  <ul *ngIf="lectures">
+    <li *ngFor="let l of lectures">
+      <div class="lecture">
+        <div class="lecture__text">
+          <rp-lecture
+          [title]="l.title"
+          [date]="l.date | date:'shortDate'"
+          [description]="l.description">
+          </rp-lecture>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
