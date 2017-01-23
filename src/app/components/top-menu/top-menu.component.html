@@ -1,12 +1,12 @@
 <div class="nav navbar-nav topbar">
   <div class="topbar__user">
     <div *ngIf="!auth.isAuthenticated()">
-      <a href="#" (click)="auth.login()" class="login">Log In</a>
+      <span (click)="auth.login()" class="login">Log In</span>
     </div>
     <div *ngIf="auth.isAuthenticated() && auth.userName">
       <div class="user">
         <img class="user__img" src="//placehold.it/40x40" alt="">
-        <span class="user__name">{{auth.userName}} (<a href="#" (click)="auth.logout()">Log out</a>)</span>
+        <span class="user__name">{{auth.userName}} (<span class="login" (click)="auth.logout()">Log out</span>)</span>
       </div>
     </div>
   </div>
