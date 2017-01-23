@@ -2,29 +2,32 @@ import { Injectable, OnInit } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { AUTH_CONFIG } from './auth.config';
 
-import { CookieService } from 'angular2-cookie/services/cookies.service';
-
 // Avoid name not found warnings
 declare var Auth0Lock: any;
 
 @Injectable()
 export class AuthService {
-  private nameKey = 'rp_user_profile_name';
 
-  userName: string;
+  private storageKeys = {
+    userName: 'user_name',
+    accessToken: 'access_token',
+    idToken: 'id_token'
+  };
 
   private lock = new Auth0Lock(AUTH_CONFIG.clientID, AUTH_CONFIG.domain, {
     oidcConformant: true,
     autoclose: true,
     auth: {
-      redirectUri: AUTH_CONFIG.callbackURL,
+      redirectUrl: AUTH_CONFIG.callbackURL,
       responseType: 'token id_token',
       audience: `https://${AUTH_CONFIG.domain}/userinfo`
     }
   });
 
-  constructor(private cookie: CookieService) {
-    this.userName = cookie.get(this.nameKey);
+  userName: string;
+
+  constructor() {
+    this.userName = localStorage.getItem(this.storageKeys.userName);
     if (!this.userName) {
       this.logout();
     }
@@ -39,10 +42,9 @@ export class AuthService {
   }
 
   public logout(): void {
-    // Remove token from localStorage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    this.cookie.remove(this.nameKey);
+    localStorage.removeItem(this.storageKeys.accessToken);
+    localStorage.removeItem(this.storageKeys.idToken);
+    localStorage.removeItem(this.storageKeys.userName);
   }
 
   public handleAuthentication(): void {
@@ -60,14 +62,14 @@ export class AuthService {
     const self = this;
     this.lock.getUserInfo(accessToken, function (err, profile) {
       if (profile) {
-        self.cookie.put(self.nameKey, profile.name);
+        localStorage.setItem(self.storageKeys.userName, profile.name);
         self.userName = profile.name;
       }
     });
   }
 
   private setUser(authResult): void {
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem(this.storageKeys.accessToken, authResult.accessToken);
+    localStorage.setItem(this.storageKeys.idToken, authResult.idToken);
   }
 }

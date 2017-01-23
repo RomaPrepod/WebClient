@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 
 import { AuthService } from './auth/auth.service';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 import { AppComponent } from './app.component';
 import * as AppComponents from './components';
@@ -33,7 +32,6 @@ import * as AppServices from './services';
   providers: [
     { provide: LOCALE_ID, useValue: 'ru-RU' },
     AuthService,
-    CookieService,
     AppServices.LectureService
   ],
   bootstrap: [AppComponent]
