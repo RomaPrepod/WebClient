@@ -33,10 +33,9 @@ import * as AppServices from './services';
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'ru-RU' },
-    AuthService,
     { provide: AuthHttp, useFactory: authHttpFactory, deps: [Http, RequestOptions] },
-    AppServices.LectureService,
-    AppServices.ProtectedDataService
+    AuthService,
+    AppServices.LectureService
   ],
   bootstrap: [AppComponent]
 })

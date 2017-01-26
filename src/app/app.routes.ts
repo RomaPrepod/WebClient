@@ -13,6 +13,5 @@ export const ROUTES: Routes = [
   { path: 'lectures', component: LecturesComponent },
   { path: 'labs', component: LabsComponent },
   { path: 'tests', component: TestsComponent },
-  { path: 'results', component: ResultsComponent },
-  { path: 'login/callback', redirectTo: '' }
+  { path: 'results', component: ResultsComponent }
 ];
