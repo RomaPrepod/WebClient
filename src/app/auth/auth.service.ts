@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { tokenNotExpired } from 'angular2-jwt';
+import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
 
 const authConfig = require('./auth.config.json');
 
@@ -8,6 +8,8 @@ declare var Auth0Lock: any;
 
 @Injectable()
 export class AuthService {
+
+  private jwtHelper: JwtHelper = new JwtHelper();
 
   private lock = new Auth0Lock(authConfig.clientID, authConfig.domain, {
     autoclose: true,
@@ -21,7 +23,22 @@ export class AuthService {
     }
   });
 
+  userName: string;
+
   constructor() {
+    this.updateUserName();
+  }
+
+  private updateUserName(): void {
+    const token = localStorage.getItem('id_token');
+    if (!token) {
+      return;
+    }
+
+    this.userName = this.jwtHelper.decodeToken(token).name;
+    if (!this.userName) {
+      this.logout();
+    }
   }
 
   public isAuthenticated(): boolean {
@@ -42,6 +59,7 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
+        this.updateUserName();
       } else if (authResult && authResult.error) {
         alert(`Error: ${authResult.error}`);
       }
