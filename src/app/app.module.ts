@@ -9,6 +9,7 @@ import { AuthService } from './auth/auth.service';
 import { AuthHttp } from 'angular2-jwt';
 import { authHttpFactory } from './auth/authHttpFactory';
 
+import { AppSettings } from './app.settings';
 import { AppComponent } from './app.component';
 import * as AppComponents from './components';
 import * as AppServices from './services';
@@ -23,7 +24,8 @@ import * as AppServices from './services';
     AppComponents.LecturesComponent,
     AppComponents.LabsComponent,
     AppComponents.TestsComponent,
-    AppComponents.ResultsComponent
+    AppComponents.ResultsComponent,
+    AppComponents.WipComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import * as AppServices from './services';
   providers: [
     { provide: LOCALE_ID, useValue: 'ru-RU' },
     { provide: AuthHttp, useFactory: authHttpFactory, deps: [Http, RequestOptions] },
+    AppSettings,
     AuthService,
     AppServices.LectureService
   ],

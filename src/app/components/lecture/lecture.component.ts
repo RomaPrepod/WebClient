@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Lecture } from '../../model';
 
 @Component({
   selector: 'rp-lecture',
@@ -6,9 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./lecture.component.css']
 })
 export class LectureComponent {
-  @Input() title: string;
-  @Input() date: Date;
-  @Input() description: string;
-
+  @Input() model: Lecture;
   constructor() { }
 }

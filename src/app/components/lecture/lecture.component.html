@@ -1,5 +1,9 @@
 <div class="lecture-wrapper">
-  <div class="lecture-wrapper__title">{{title}}</div>
-  <div class="lecture-wrapper__date">{{date}}</div>
-  <div class="lecture-wrapper__description">{{description}}</div>
+  <div class="lecture-wrapper__title">{{model.title}}</div>
+  <div class="lecture-wrapper__date">{{model.date | date:'shortDate'}}</div>
+  <div class="lecture-wrapper__description">{{model.description}}</div>
+  <div *ngIf="model.downloads">Скачать:
+    <a *ngIf="model.downloads.presentation" [href]="model.downloads.presentation"><img src="./../../../assets/excel.ico" title="презентацию" alt="презентацию" class="download-icon"></a>
+    <a *ngIf="model.downloads.manual" [href]="model.downloads.manual"><img src="./../../../assets/word.ico" title="методичку" alt="методичку" class="download-icon"></a>
+  </div>
 </div>

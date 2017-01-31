@@ -6,3 +6,4 @@ export * from './nav-menu/nav-menu.component';
 export * from './results/results.component';
 export * from './tests/tests.component';
 export * from './top-menu/top-menu.component';
+export * from './wip/wip.component'

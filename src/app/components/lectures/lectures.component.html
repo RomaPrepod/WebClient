@@ -1,16 +1,22 @@
 <div class="lectures">
   <h1>Лекции</h1>
-  <ul *ngIf="lectures">
-    <li *ngFor="let l of lectures">
-      <div class="lecture">
-        <div class="lecture__text">
-          <rp-lecture
-          [title]="l.title"
-          [date]="l.date | date:'shortDate'"
-          [description]="l.description">
-          </rp-lecture>
+  <div *ngIf="loading">
+    <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div *ngIf="!loading">
+    <ul *ngIf="lectures">
+      <li *ngFor="let lecture of lectures">
+        <div class="lecture">
+          <div class="lecture__text">
+            <rp-lecture [model]="lecture"></rp-lecture>
+          </div>
         </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+    <div *ngIf="error">
+      <p>Произошла ошибка</p>
+      <a class="pointer" (click)="loadLectures()"><i class="fa fa-refresh"></i> попробовать снова</a>
+    </div>
+  </div>
 </div>
