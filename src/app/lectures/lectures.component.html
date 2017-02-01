@@ -6,7 +6,7 @@
   </div>
   <div *ngIf="!loading">
     <ul *ngIf="lectures">
-      <li *ngFor="let lecture of lectures">
+      <li *ngFor="let lecture of lectures | async">
         <div class="lecture">
           <div class="lecture__text">
             <rp-lecture [model]="lecture"></rp-lecture>

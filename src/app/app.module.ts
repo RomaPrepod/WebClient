@@ -1,44 +1,43 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, Http, RequestOptions } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { ROUTES } from './app.routes';
+import { routes } from './app.routes';
 
-import { AuthService } from './auth/auth.service';
-import { AuthHttp } from 'angular2-jwt';
-import { authHttpFactory } from './auth/authHttpFactory';
+import { AngularFireModule } from 'angularfire2';
+import { firebaseConfig } from '../environments/firebase.config';
 
-import { AppSettings } from './app.settings';
 import { AppComponent } from './app.component';
-import * as AppComponents from './components';
-import * as AppServices from './services';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { TopMenuComponent } from './top-menu/top-menu.component';
+import { HomeComponent } from './home/home.component';
+import { LecturesComponent } from './lectures/lectures.component';
+import { LectureComponent } from './lectures/lecture.component';
+import { WipComponent } from './wip/wip.component';
+
+import { LectureService } from './lectures/lecture.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppComponents.NavMenuComponent,
-    AppComponents.TopMenuComponent,
-    AppComponents.HomeComponent,
-    AppComponents.LectureComponent,
-    AppComponents.LecturesComponent,
-    AppComponents.LabsComponent,
-    AppComponents.TestsComponent,
-    AppComponents.ResultsComponent,
-    AppComponents.WipComponent
+    NavMenuComponent,
+    TopMenuComponent,
+    HomeComponent,
+    LecturesComponent,
+    LectureComponent,
+    WipComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(routes),
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'ru-RU' },
-    { provide: AuthHttp, useFactory: authHttpFactory, deps: [Http, RequestOptions] },
-    AppSettings,
-    AuthService,
-    AppServices.LectureService
+    LectureService
   ],
   bootstrap: [AppComponent]
 })

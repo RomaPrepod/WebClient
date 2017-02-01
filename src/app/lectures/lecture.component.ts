@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Lecture } from '../../model';
+import { Lecture } from './lecture';
 
 @Component({
   selector: 'rp-lecture',

@@ -1,17 +1,14 @@
 import { Routes } from '@angular/router';
 
-import {
-  HomeComponent,
-  LecturesComponent,
-  LabsComponent,
-  TestsComponent,
-  ResultsComponent
-} from './components';
+import { HomeComponent } from './home/home.component';
+import { LecturesComponent } from './lectures/lectures.component';
+import { LectureComponent } from './lectures/lecture.component';
+import { WipComponent } from './wip/wip.component';
 
-export const ROUTES: Routes = [
+export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'lectures', component: LecturesComponent },
-  { path: 'labs', component: LabsComponent },
-  { path: 'tests', component: TestsComponent },
-  { path: 'results', component: ResultsComponent }
+  { path: 'labs', component: WipComponent },
+  { path: 'tests', component: WipComponent },
+  { path: 'results', component: WipComponent }
 ];
