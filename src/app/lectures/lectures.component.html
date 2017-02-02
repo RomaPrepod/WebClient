@@ -1,12 +1,12 @@
 <div class="lectures">
   <h1>Лекции</h1>
-  <div *ngIf="loading">
+  <div *ngIf="isLoading">
     <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
     <span class="sr-only">Loading...</span>
   </div>
-  <div *ngIf="!loading">
+  <div *ngIf="!isLoading">
     <ul *ngIf="lectures">
-      <li *ngFor="let lecture of lectures | async">
+      <li *ngFor="let lecture of lectures">
         <div class="lecture">
           <div class="lecture__text">
             <rp-lecture [model]="lecture"></rp-lecture>
@@ -14,7 +14,7 @@
         </div>
       </li>
     </ul>
-    <div *ngIf="error">
+    <div *ngIf="isLoadingFailed">
       <p>Произошла ошибка</p>
       <a class="pointer" (click)="loadLectures()"><i class="fa fa-refresh"></i> попробовать снова</a>
     </div>

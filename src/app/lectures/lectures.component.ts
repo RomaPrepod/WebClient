@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-
 import { Lecture } from './lecture';
 import { LectureService } from './lecture.service';
 
@@ -10,12 +8,26 @@ import { LectureService } from './lecture.service';
   styleUrls: ['./lectures.component.css']
 })
 export class LecturesComponent implements OnInit {
-  lectures: Observable<Lecture[]>;
+  lectures: Lecture[];
+  isLoading: boolean;
+  isLoadingFailed: boolean;
 
   constructor(private lectureService: LectureService) {
   }
 
   ngOnInit() {
-    this.lectures = this.lectureService.getAll();
+    this.getLectures();
+  }
+
+  private getLectures() {
+    this.isLoading = true;
+    this.isLoadingFailed = false;
+    this.lectureService.getAll()
+      .subscribe(
+        lectures => {
+          this.isLoading = false;
+          this.lectures = lectures;
+        },
+        error => this.isLoadingFailed = true);
   }
 }
