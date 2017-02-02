@@ -1,12 +1,16 @@
 <div class="nav navbar-nav topbar">
   <div class="topbar__user">
-    <div *ngIf="!auth.isAuthenticated()">
-      <span (click)="auth.login()" class="login">Log In</span>
+    <div *ngIf="!auth.isAuthenticated">
+      <button (click)="auth.signInWithGitHub()" class="btn btn-default login">
+        <i class="fa fa-github login__icon"></i>
+        Sign in with GitHub
+      </button>
     </div>
-    <div *ngIf="auth.isAuthenticated() && auth.userName">
+    <div *ngIf="auth.isAuthenticated">
       <div class="user">
-        <img class="user__img" src="//placehold.it/40x40" alt="">
-        <span class="user__name">{{auth.userName}} (<span class="login" (click)="auth.logout()">Log out</span>)</span>
+        <img class="user__img" [src]="auth.currentUser.photoURL" alt="">
+        <span class="user__name">{{auth.currentUser.displayName}}</span>
+        <span (click)="auth.signOut()" class="btn btn-danger">Sing out</span>
       </div>
     </div>
   </div>

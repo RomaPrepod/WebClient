@@ -1,4 +1,4 @@
-export const firebaseConfig = {
+export const FIRE_CONFIG = {
   apiKey: 'AIzaSyCEbJ5jxXrE4mj7Qcd01k3WR2x5N9nCgHM',
   authDomain: 'dev-romaprepod.firebaseapp.com',
   databaseURL: 'https://dev-romaprepod.firebaseio.com',

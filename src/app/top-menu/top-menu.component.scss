@@ -24,7 +24,14 @@ $height: 50px;
 .user__name {
   color: #333;
 }
+
 .login {
-  cursor: pointer;
-  color: blue;
+  background-color: #444444;
+  color: #fff;
 }
+
+.logout {
+  background-color: #e60c0c;
+  color: #fff;
+}
+
